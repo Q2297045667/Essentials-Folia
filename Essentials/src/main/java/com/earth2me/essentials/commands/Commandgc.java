@@ -2,16 +2,11 @@ package com.earth2me.essentials.commands;
 
 import com.earth2me.essentials.CommandSource;
 import com.earth2me.essentials.utils.DateUtil;
-import net.ess3.provider.SchedulingProvider;
-import net.ess3.provider.providers.BukkitSchedulingProvider;
-import org.bukkit.Bukkit;
-import org.bukkit.Chunk;
 import org.bukkit.Server;
 import org.bukkit.World;
 
 import java.lang.management.ManagementFactory;
 import java.util.List;
-import java.util.logging.Level;
 
 public class Commandgc extends EssentialsCommand {
     public Commandgc() {
