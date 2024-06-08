@@ -3,7 +3,6 @@ package com.earth2me.essentials.commands;
 import com.earth2me.essentials.CommandSource;
 import com.earth2me.essentials.utils.DateUtil;
 import org.bukkit.Chunk;
-import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
 
@@ -56,8 +55,7 @@ public class Commandgc extends EssentialsCommand {
 
                 try {
                     for (final Chunk chunk : w.getLoadedChunks()) {
-                        Chunk chunkAt = chunk.getWorld().getChunkAt(chunk.getX(), chunk.getZ());
-                        ess.scheduleLocationDelayedTask(chunkAt, () ->
+                        ess.scheduleLocationDelayedTask(chunk, () ->
                                 tileEntities.getAndAdd(chunk.getTileEntities().length));
                     }
                 } catch (final ClassCastException ex) {
