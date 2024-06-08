@@ -60,9 +60,8 @@ public class Commandgc extends EssentialsCommand {
                 tileEntities.set(0);
 
                 try {
+                    loadedChunks.getAndAdd(w.getLoadedChunks().length);
                     for (final Chunk chunk : w.getLoadedChunks()) {
-                        ess.scheduleLocationDelayedTask(chunk, () ->
-                                loadedChunks.getAndAdd(chunk.getWorld().getLoadedChunks().length));
                         ess.scheduleLocationDelayedTask(chunk, () ->
                                 entities.getAndAdd(chunk.getEntities().length));
                         ess.scheduleLocationDelayedTask(chunk, () ->
