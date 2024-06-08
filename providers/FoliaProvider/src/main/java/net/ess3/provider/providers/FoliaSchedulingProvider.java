@@ -93,8 +93,9 @@ public class FoliaSchedulingProvider implements SchedulingProvider, Listener {
     }
 
     @Override
-    public void runGlobalLocationalTask(Runnable runnable, long delay) {
-        plugin.getServer().getGlobalRegionScheduler().runDelayed(plugin, scheduledTask -> runnable.run(), delay);
+    public EssentialsTask runGlobalLocationalTask(Runnable runnable, long delay) {
+        final ScheduledTask task = plugin.getServer().getGlobalRegionScheduler().runDelayed(plugin, scheduledTask -> runnable.run(), delay);
+        return task::cancel;
     }
 
     @Override

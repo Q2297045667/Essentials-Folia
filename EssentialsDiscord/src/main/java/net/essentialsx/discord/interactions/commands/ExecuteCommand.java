@@ -21,13 +21,8 @@ public class ExecuteCommand extends InteractionCommandImpl {
     @Override
     public void onCommand(final InteractionEvent event) {
         final String command = event.getStringArgument("command");
-<<<<<<< HEAD
-        event.reply(tl("discordCommandExecuteReply", command));
-        jda.getPlugin().getEss().scheduleGlobalDelayedTask(() -> {
-=======
         event.replyTl("discordCommandExecuteReply", command);
-        Bukkit.getScheduler().runTask(jda.getPlugin(), () -> {
->>>>>>> 2.x
+        jda.getPlugin().getEss().scheduleGlobalDelayedTask(() -> {
             try {
                 Bukkit.dispatchCommand(new DiscordCommandSender(jda, Bukkit.getConsoleSender(), message -> event.reply(MessageUtil.sanitizeDiscordMarkdown(message))).getSender(), command);
             } catch (CommandException e) {

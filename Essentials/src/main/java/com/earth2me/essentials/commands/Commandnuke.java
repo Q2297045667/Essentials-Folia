@@ -35,10 +35,9 @@ public class Commandnuke extends EssentialsCommand {
             if (user == null) {
                 continue;
             }
-<<<<<<< HEAD
-            ess.scheduleEntityDelayedTask(player, () -> {
-                player.sendMessage(tl("nuke"));
-                final Location loc = player.getLocation();
+            ess.scheduleEntityDelayedTask(user.getBase(), () -> {
+                user.sendTl("nuke");
+                final Location loc = user.getLocation();
                 final World world = loc.getWorld();
                 if (world != null) {
                     for (int x = -10; x <= 10; x += 5) {
@@ -46,16 +45,6 @@ public class Commandnuke extends EssentialsCommand {
                             final TNTPrimed entity = world.spawn(new Location(world, loc.getBlockX() + x, world.getHighestBlockYAt(loc) + 64, loc.getBlockZ() + z), TNTPrimed.class);
                             entity.setMetadata(NUKE_META_KEY, new FixedMetadataValue(ess, true));
                         }
-=======
-            user.sendTl("nuke");
-            final Location loc = user.getLocation();
-            final World world = loc.getWorld();
-            if (world != null) {
-                for (int x = -10; x <= 10; x += 5) {
-                    for (int z = -10; z <= 10; z += 5) {
-                        final TNTPrimed entity = world.spawn(new Location(world, loc.getBlockX() + x, world.getHighestBlockYAt(loc) + 64, loc.getBlockZ() + z), TNTPrimed.class);
-                        entity.setMetadata(NUKE_META_KEY, new FixedMetadataValue(ess, true));
->>>>>>> 2.x
                     }
                 }
             });

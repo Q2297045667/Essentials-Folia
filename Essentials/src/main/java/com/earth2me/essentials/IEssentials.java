@@ -18,11 +18,8 @@ import net.ess3.provider.ItemUnbreakableProvider;
 import net.ess3.provider.KnownCommandsProvider;
 import net.ess3.provider.MaterialTagProvider;
 import net.ess3.provider.PersistentDataProvider;
-<<<<<<< HEAD
-import net.ess3.provider.SchedulingProvider;
-=======
 import net.ess3.provider.PlayerLocaleProvider;
->>>>>>> 2.x
+import net.ess3.provider.SchedulingProvider;
 import net.ess3.provider.SerializationProvider;
 import net.ess3.provider.ServerStateProvider;
 import net.ess3.provider.SignDataProvider;
@@ -136,7 +133,7 @@ public interface IEssentials extends Plugin {
         scheduleGlobalDelayedTask(run, 1);
     }
 
-    void scheduleGlobalDelayedTask(Runnable run, long delay);
+    SchedulingProvider.EssentialsTask scheduleGlobalDelayedTask(Runnable run, long delay);
 
     SchedulingProvider.EssentialsTask scheduleGlobalRepeatingTask(Runnable run, long delay, long period);
 

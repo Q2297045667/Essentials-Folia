@@ -92,12 +92,8 @@ public class Commandtime extends EssentialsCommand {
                 world.setTime(time + (timeAdd ? 0 : 24000) + timeTick);
             });
         }
-<<<<<<< HEAD
-        sender.sendMessage(tl(add ? "timeWorldAdd" : "timeWorldSet", DescParseTickFormat.formatTicks(timeTick), joiner.toString()));
-=======
 
         sender.sendTl(add ? "timeWorldAdd" : "timeWorldSet", DescParseTickFormat.formatTicks(timeTick), joiner.toString());
->>>>>>> 2.x
     }
 
     private void getWorldsTime(final CommandSource sender, final Collection<World> worlds) {

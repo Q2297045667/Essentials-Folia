@@ -36,21 +36,12 @@ public class Commandweather extends EssentialsCommand {
             if (args.length > 1) {
                 world.setStorm(isStorm);
                 world.setWeatherDuration(Integer.parseInt(args[1]) * 20);
-                user.sendMessage(isStorm ? tl("weatherStormFor", world.getName(), args[1]) : tl("weatherSunFor", world.getName(), args[1]));
+                user.sendTl(isStorm ? "weatherStormFor" : "weatherSunFor", world.getName(), args[1]);
                 return;
             }
             world.setStorm(isStorm);
-<<<<<<< HEAD
-            user.sendMessage(isStorm ? tl("weatherStorm", world.getName()) : tl("weatherSun", world.getName()));
+            user.sendTl(isStorm ? "weatherStorm" : "weatherSun", world.getName());
         });
-=======
-            world.setWeatherDuration(Integer.parseInt(args[1]) * 20);
-            user.sendTl(isStorm ? "weatherStormFor" : "weatherSunFor", world.getName(), args[1]);
-            return;
-        }
-        world.setStorm(isStorm);
-        user.sendTl(isStorm ? "weatherStorm" : "weatherSun", world.getName());
->>>>>>> 2.x
     }
 
     @Override
@@ -69,21 +60,12 @@ public class Commandweather extends EssentialsCommand {
             if (args.length > 2) {
                 world.setStorm(isStorm);
                 world.setWeatherDuration(Integer.parseInt(args[2]) * 20);
-                sender.sendMessage(isStorm ? tl("weatherStormFor", world.getName(), args[2]) : tl("weatherSunFor", world.getName(), args[2]));
+                sender.sendTl(isStorm ? "weatherStormFor" : "weatherSunFor", world.getName(), args[2]);
                 return;
             }
             world.setStorm(isStorm);
-<<<<<<< HEAD
-            sender.sendMessage(isStorm ? tl("weatherStorm", world.getName()) : tl("weatherSun", world.getName()));
+            sender.sendTl(isStorm ? "weatherStorm" : "weatherSun", world.getName());
         });
-=======
-            world.setWeatherDuration(Integer.parseInt(args[2]) * 20);
-            sender.sendTl(isStorm ? "weatherStormFor" : "weatherSunFor", world.getName(), args[2]);
-            return;
-        }
-        world.setStorm(isStorm);
-        sender.sendTl(isStorm ? "weatherStorm" : "weatherSun", world.getName());
->>>>>>> 2.x
     }
 
     @Override

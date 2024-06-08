@@ -75,7 +75,7 @@ public final class Console implements IMessageRecipient {
 
         final Audience consoleAudience = ((Essentials) ess).getBukkitAudience().sender(getCommandSender());
         final Component component = AdventureUtil.miniMessage()
-                .deserialize(translation);
+            .deserialize(translation);
         consoleAudience.sendMessage(component);
     }
 
