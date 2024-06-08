@@ -34,7 +34,6 @@ public class Commandgc extends EssentialsCommand {
         sender.sendTl("gctotal", Runtime.getRuntime().totalMemory() / 1024 / 1024);
         sender.sendTl("gcfree", Runtime.getRuntime().freeMemory() / 1024 / 1024);
 
-
         ess.scheduleGlobalDelayedTask(() -> {
             final List<World> worlds = server.getWorlds();
             for (final World w : worlds) {
@@ -56,7 +55,7 @@ public class Commandgc extends EssentialsCommand {
                 } catch (final java.lang.ClassCastException ex) {
                     ess.getLogger().log(Level.SEVERE, "Corrupted chunk data on world " + w, ex);
                 }*/
-                sender.sendTl("gcWorld", worldType, w.getName(), w.getLoadedChunks().length, w.getEntities().size());
+                sender.sendTl("gcWorld", worldType, w.getName(), w.getLoadedChunks().length);
 
             }
         });
