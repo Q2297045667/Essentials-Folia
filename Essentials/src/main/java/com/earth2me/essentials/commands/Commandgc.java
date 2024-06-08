@@ -39,11 +39,15 @@ public class Commandgc extends EssentialsCommand {
         ess.scheduleGlobalDelayedTask(() -> {
             final List<World> worlds = server.getWorlds();
             for (final World w : worlds) {
-                String worldType = switch (w.getEnvironment()) {
-                    case NETHER -> "Nether";
-                    case THE_END -> "The End";
-                    default -> "World";
-                };
+                String worldType = "World";
+                switch (w.getEnvironment()) {
+                    case NETHER:
+                        worldType = "Nether";
+                        break;
+                    case THE_END:
+                        worldType = "The End";
+                        break;
+                }
 
                 int tileEntities = 0;
 
