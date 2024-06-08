@@ -14,18 +14,14 @@ dependencies {
     implementation 'org.checkerframework:checker-qual:3.21.0'
     implementation 'nu.studer:java-ordered-properties:1.0.4'
 
-    implementation 'net.kyori:adventure-api:4.17.0'
-    implementation 'net.kyori:adventure-text-minimessage:4.17.0'
-    implementation 'net.kyori:adventure-platform-bukkit:4.3.3'
+    implementation 'net.kyori:adventure-api:4.15.0'
+    implementation 'net.kyori:adventure-text-minimessage:4.15.0'
+    implementation 'net.kyori:adventure-platform-bukkit:4.3.2'
 
     // Providers
     api project(':providers:BaseProviders')
-
-    api project(':providers:PaperProvider')
-    api project(":providers:FoliaProvider")
-
     api project(path: ':providers:PaperProvider', configuration: 'shadow')
-
+    api project(path: ':providers:FoliaProvider')
     api(project(':providers:NMSReflectionProvider')) {
         exclude group: "org.bukkit", module: "bukkit"
     }
@@ -69,9 +65,8 @@ shadowJar {
         include (dependency('net.kyori:adventure-text-serializer-legacy'))
         include (dependency('net.kyori:adventure-text-minimessage'))
         include (project(':providers:BaseProviders'))
-        include (project(':providers:PaperProvider'))
-        include (project(':providers:FoliaProvider'))
         include (project(path: ':providers:PaperProvider', configuration: 'shadow'))
+        include (project(path: ':providers:FoliaProvider'))
         include (project(':providers:NMSReflectionProvider'))
         include (project(':providers:1_8Provider'))
         include (project(':providers:1_12Provider'))
@@ -92,3 +87,4 @@ shadowJar {
         include(dependency('net.kyori:adventure-text-minimessage'))
     }
 }
+
