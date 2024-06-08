@@ -3,13 +3,12 @@ package com.earth2me.essentials.commands;
 import com.earth2me.essentials.CommandSource;
 import com.earth2me.essentials.User;
 import com.google.common.collect.Lists;
+import net.ess3.api.TranslatableException;
 import org.bukkit.Server;
 import org.bukkit.World;
 
 import java.util.Collections;
 import java.util.List;
-
-import static com.earth2me.essentials.I18n.tl;
 
 public class Commandweather extends EssentialsCommand {
     public Commandweather() {
@@ -41,8 +40,17 @@ public class Commandweather extends EssentialsCommand {
                 return;
             }
             world.setStorm(isStorm);
+<<<<<<< HEAD
             user.sendMessage(isStorm ? tl("weatherStorm", world.getName()) : tl("weatherSun", world.getName()));
         });
+=======
+            world.setWeatherDuration(Integer.parseInt(args[1]) * 20);
+            user.sendTl(isStorm ? "weatherStormFor" : "weatherSunFor", world.getName(), args[1]);
+            return;
+        }
+        world.setStorm(isStorm);
+        user.sendTl(isStorm ? "weatherStorm" : "weatherSun", world.getName());
+>>>>>>> 2.x
     }
 
     @Override
@@ -54,7 +62,7 @@ public class Commandweather extends EssentialsCommand {
         final boolean isStorm = args[1].equalsIgnoreCase("storm");
         final World world = server.getWorld(args[0]);
         if (world == null) {
-            throw new Exception(tl("weatherInvalidWorld", args[0]));
+            throw new TranslatableException("weatherInvalidWorld", args[0]);
         }
 
         ess.scheduleLocationDelayedTask(world.getSpawnLocation(), () -> {
@@ -65,8 +73,17 @@ public class Commandweather extends EssentialsCommand {
                 return;
             }
             world.setStorm(isStorm);
+<<<<<<< HEAD
             sender.sendMessage(isStorm ? tl("weatherStorm", world.getName()) : tl("weatherSun", world.getName()));
         });
+=======
+            world.setWeatherDuration(Integer.parseInt(args[2]) * 20);
+            sender.sendTl(isStorm ? "weatherStormFor" : "weatherSunFor", world.getName(), args[2]);
+            return;
+        }
+        world.setStorm(isStorm);
+        sender.sendTl(isStorm ? "weatherStorm" : "weatherSun", world.getName());
+>>>>>>> 2.x
     }
 
     @Override
