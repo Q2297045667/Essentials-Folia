@@ -51,13 +51,8 @@ public class Commandgc extends EssentialsCommand {
                 }
 
                 final AtomicInteger loadedChunks = new AtomicInteger();
-                loadedChunks.set(0);
-
                 final AtomicInteger entities = new AtomicInteger();
-                entities.set(0);
-
                 final AtomicInteger tileEntities = new AtomicInteger();
-                tileEntities.set(0);
 
                 try {
                     loadedChunks.getAndAdd(w.getLoadedChunks().length);
