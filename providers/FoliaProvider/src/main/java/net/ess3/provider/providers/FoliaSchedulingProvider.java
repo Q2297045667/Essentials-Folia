@@ -3,6 +3,7 @@ package net.ess3.provider.providers;
 import io.papermc.paper.threadedregions.RegionizedServerInitEvent;
 import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import net.ess3.provider.SchedulingProvider;
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
@@ -74,6 +75,11 @@ public class FoliaSchedulingProvider implements SchedulingProvider, Listener {
             throw new IllegalArgumentException("entity is removed!");
         }
         return task::cancel;
+    }
+
+    @Override
+    public void runLocationalTask(Chunk chunk, Runnable runnable) {
+        plugin.getServer().getRegionScheduler().execute(plugin, chunk.getWorld(), chunk.getX(), chunk.getZ(), runnable);
     }
 
     @Override
