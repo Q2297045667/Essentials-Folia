@@ -5,6 +5,7 @@ import com.earth2me.essentials.utils.DateUtil;
 import org.bukkit.Chunk;
 import org.bukkit.Server;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
 
 import java.lang.management.ManagementFactory;
 import java.util.List;
@@ -53,16 +54,22 @@ public class Commandgc extends EssentialsCommand {
                 final AtomicInteger tileEntities = new AtomicInteger();
                 tileEntities.set(0);
 
+                final AtomicInteger entitySize = new AtomicInteger();
+                entitySize.set(0);
+
                 try {
                     for (final Chunk chunk : w.getLoadedChunks()) {
-                        ess.scheduleLocationDelayedTask(chunk, () ->
-                                tileEntities.getAndAdd(chunk.getTileEntities().length));
+                        ess.scheduleLocationDelayedTask(chunk, () -> tileEntities.getAndAdd(chunk.getTileEntities().length));
                     }
                 } catch (final ClassCastException ex) {
                     ess.getLogger().log(Level.SEVERE, "Corrupted chunk data on world " + w, ex);
                 }
-                sender.sendTl("gcWorld", worldType, w.getName(), w.getLoadedChunks().length, w.getEntities().size(), tileEntities);
 
+                for(Entity entity : w.getEntities()) {
+                    ess.scheduleEntityDelayedTask(entity, () -> entitySize.getAndAdd(entity.getWorld().getEntities().size()));
+                }
+
+                sender.sendTl("gcWorld", worldType, w.getName(), w.getLoadedChunks().length, entitySize, tileEntities);
             }
         });
     }
