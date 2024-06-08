@@ -114,10 +114,7 @@ import net.essentialsx.api.v2.services.BalanceTop;
 import net.essentialsx.api.v2.services.mail.MailService;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Server;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
@@ -1302,6 +1299,11 @@ public class Essentials extends JavaPlugin implements net.ess3.api.IEssentials {
     @Override
     public SchedulingProvider.EssentialsTask scheduleEntityRepeatingTask(Entity entity, Runnable run, long delay, long period) {
         return schedulingProvider.runEntityTaskRepeating(entity, run, delay, period);
+    }
+
+    @Override
+    public void scheduleLocationDelayedTask(Chunk chunk, Runnable run) {
+        schedulingProvider.runLocationalTask(chunk, run);
     }
 
     @Override

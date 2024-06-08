@@ -29,6 +29,7 @@ import net.ess3.provider.SyncCommandsProvider;
 import net.ess3.provider.WorldInfoProvider;
 import net.essentialsx.api.v2.services.BalanceTop;
 import net.essentialsx.api.v2.services.mail.MailService;
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
@@ -122,6 +123,8 @@ public interface IEssentials extends Plugin {
     SchedulingProvider.EssentialsTask scheduleEntityDelayedTask(Entity entity, Runnable run, long delay);
 
     SchedulingProvider.EssentialsTask scheduleEntityRepeatingTask(Entity entity, Runnable run, long delay, long period);
+
+    void scheduleLocationDelayedTask(Chunk chunk, Runnable run);
 
     void scheduleLocationDelayedTask(Location location, Runnable run);
 

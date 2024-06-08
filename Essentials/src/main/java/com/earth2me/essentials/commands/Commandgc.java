@@ -56,8 +56,8 @@ public class Commandgc extends EssentialsCommand {
 
                 try {
                     for (final Chunk chunk : w.getLoadedChunks()) {
-                        Location location = (Location) chunk.getWorld().getChunkAt(chunk.getX(), chunk.getZ());
-                        ess.scheduleLocationDelayedTask(location, () ->
+                        Chunk chunkAt = chunk.getWorld().getChunkAt(chunk.getX(), chunk.getZ());
+                        ess.scheduleLocationDelayedTask(chunkAt, () ->
                                 tileEntities.getAndAdd(chunk.getTileEntities().length));
                     }
                 } catch (final ClassCastException ex) {
