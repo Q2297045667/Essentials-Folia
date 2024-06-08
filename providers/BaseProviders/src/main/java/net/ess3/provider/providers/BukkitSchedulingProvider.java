@@ -65,8 +65,8 @@ public class BukkitSchedulingProvider implements SchedulingProvider {
     }
 
     @Override
-    public void runGlobalLocationalTask(Runnable runnable, long delay) {
-        scheduleSyncTask(runnable, delay);
+    public EssentialsTask runGlobalLocationalTask(Runnable runnable, long delay) {
+        return scheduleSyncTask(runnable, delay);
     }
 
     @Override

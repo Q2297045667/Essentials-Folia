@@ -7,10 +7,10 @@ import com.earth2me.essentials.textreader.KeywordReplacer;
 import com.earth2me.essentials.textreader.TextInput;
 import com.earth2me.essentials.textreader.TextPager;
 import com.earth2me.essentials.utils.AdventureUtil;
-import com.earth2me.essentials.utils.CommonPlaceholders;
 import com.earth2me.essentials.utils.DateUtil;
 import com.earth2me.essentials.utils.FormatUtil;
 import com.earth2me.essentials.utils.LocationUtil;
+import com.earth2me.essentials.utils.CommonPlaceholders;
 import com.earth2me.essentials.utils.MaterialUtil;
 import com.earth2me.essentials.utils.VersionUtil;
 import io.papermc.lib.PaperLib;
@@ -613,7 +613,7 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
         final String cmd = event.getMessage().toLowerCase(Locale.ENGLISH).split(" ")[0].replace("/", "").toLowerCase(Locale.ENGLISH);
         final int argStartIndex = event.getMessage().indexOf(" ");
         final String args = argStartIndex == -1 ? "" // No arguments present
-                : event.getMessage().substring(argStartIndex); // arguments start at argStartIndex; substring from there.
+            : event.getMessage().substring(argStartIndex); // arguments start at argStartIndex; substring from there.
 
         // If the plugin command does not exist, check if it is an alias from commands.yml
         if (ess.getServer().getPluginCommand(cmd) == null) {
@@ -1075,8 +1075,8 @@ public class EssentialsPlayerListener implements Listener, FakeAccessor {
             final PluginCommand command = ess.getServer().getPluginCommand(label);
 
             return command != null
-                    && (command.getPlugin() == ess || command.getPlugin().getClass().getName().startsWith("com.earth2me.essentials") || command.getPlugin().getClass().getName().startsWith("net.essentialsx"))
-                    && (ess.getSettings().isCommandOverridden(label) || (ess.getAlternativeCommandsHandler().getAlternative(label) == null));
+                && (command.getPlugin() == ess || command.getPlugin().getClass().getName().startsWith("com.earth2me.essentials") || command.getPlugin().getClass().getName().startsWith("net.essentialsx"))
+                && (ess.getSettings().isCommandOverridden(label) || (ess.getAlternativeCommandsHandler().getAlternative(label) == null));
         }
     }
 

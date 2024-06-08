@@ -24,7 +24,7 @@ public interface SchedulingProvider extends Provider {
 
     EssentialsTask runLocationalTaskRepeating(Location location, Runnable runnable, long delay, long period);
 
-    void runGlobalLocationalTask(Runnable runnable, long delay);
+    EssentialsTask runGlobalLocationalTask(Runnable runnable, long delay);
 
     EssentialsTask runGlobalLocationalTaskRepeating(Runnable runnable, long delay, long period);
 

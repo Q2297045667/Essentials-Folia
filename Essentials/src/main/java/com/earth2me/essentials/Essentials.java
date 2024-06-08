@@ -88,12 +88,9 @@ import net.ess3.provider.providers.BukkitSchedulingProvider;
 import net.ess3.provider.providers.BukkitSpawnerBlockProvider;
 import net.ess3.provider.providers.FixedHeightWorldInfoProvider;
 import net.ess3.provider.providers.FlatSpawnEggProvider;
-<<<<<<< HEAD
-import net.ess3.provider.providers.FoliaSchedulingProvider;
-=======
 import net.ess3.provider.providers.LegacyBannerDataProvider;
 import net.ess3.provider.providers.LegacyDamageEventProvider;
->>>>>>> 2.x
+import net.ess3.provider.providers.FoliaSchedulingProvider;
 import net.ess3.provider.providers.LegacyItemUnbreakableProvider;
 import net.ess3.provider.providers.LegacyPlayerLocaleProvider;
 import net.ess3.provider.providers.LegacyPotionMetaProvider;
@@ -115,13 +112,10 @@ import net.ess3.provider.providers.PaperServerStateProvider;
 import net.ess3.provider.providers.PrehistoricPotionMetaProvider;
 import net.essentialsx.api.v2.services.BalanceTop;
 import net.essentialsx.api.v2.services.mail.MailService;
-<<<<<<< HEAD
-import org.bukkit.Location;
-=======
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
->>>>>>> 2.x
+import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -215,12 +209,9 @@ public class Essentials extends JavaPlugin implements net.ess3.api.IEssentials {
     private transient WorldInfoProvider worldInfoProvider;
     private transient PlayerLocaleProvider playerLocaleProvider;
     private transient SignDataProvider signDataProvider;
-<<<<<<< HEAD
-    private transient SchedulingProvider schedulingProvider;
-=======
     private transient DamageEventProvider damageEventProvider;
     private transient BiomeKeyProvider biomeKeyProvider;
->>>>>>> 2.x
+    private transient SchedulingProvider schedulingProvider;
     private transient Kits kits;
     private transient RandomTeleport randomTeleport;
     private transient UpdateChecker updateChecker;
@@ -591,6 +582,8 @@ public class Essentials extends JavaPlugin implements net.ess3.api.IEssentials {
     }
 
     private void registerListeners(final PluginManager pm) {
+        HandlerList.unregisterAll(this);
+
         if (getSettings().isDebug()) {
             LOGGER.log(Level.INFO, "Registering Listeners");
         }
@@ -697,15 +690,12 @@ public class Essentials extends JavaPlugin implements net.ess3.api.IEssentials {
                 command.setUsage(tlLiteral(commandName + "CommandUsage"));
             }
         }
-<<<<<<< HEAD
-=======
 
         final PluginManager pm = getServer().getPluginManager();
         registerListeners(pm);
 
         AdventureUtil.setEss(this);
         bukkitAudience = BukkitAudiences.create(this);
->>>>>>> 2.x
     }
 
     private IEssentialsCommand loadCommand(final String path, final String name, final IEssentialsModule module, final ClassLoader classLoader) throws Exception {
@@ -1234,10 +1224,6 @@ public class Essentials extends JavaPlugin implements net.ess3.api.IEssentials {
     }
 
     @Override
-<<<<<<< HEAD
-    public void scheduleInitTask(Runnable runnable) {
-        schedulingProvider.registerInitTask(runnable);
-=======
     public void broadcastTl(final String tlKey, final Object... args) {
         broadcastTl(null, null, false, tlKey, args);
     }
@@ -1284,9 +1270,8 @@ public class Essentials extends JavaPlugin implements net.ess3.api.IEssentials {
     }
 
     @Override
-    public BukkitTask runTaskAsynchronously(final Runnable run) {
-        return this.getScheduler().runTaskAsynchronously(this, run);
->>>>>>> 2.x
+    public void scheduleInitTask(Runnable runnable) {
+        schedulingProvider.registerInitTask(runnable);
     }
 
     @Override
@@ -1335,8 +1320,8 @@ public class Essentials extends JavaPlugin implements net.ess3.api.IEssentials {
     }
 
     @Override
-    public void scheduleGlobalDelayedTask(Runnable run, long delay) {
-        schedulingProvider.runGlobalLocationalTask(run, delay);
+    public SchedulingProvider.EssentialsTask scheduleGlobalDelayedTask(Runnable run, long delay) {
+        return schedulingProvider.runGlobalLocationalTask(run, delay);
     }
 
     @Override

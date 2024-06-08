@@ -409,6 +409,8 @@ public interface ISettings extends IConf {
 
     boolean isUpdateCheckEnabled();
 
+    boolean isNickCheckPatternMatch();
+
     boolean showZeroBaltop();
 
     int getMaxItemLore();
