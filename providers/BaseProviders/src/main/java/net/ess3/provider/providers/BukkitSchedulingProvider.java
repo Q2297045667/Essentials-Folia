@@ -2,6 +2,7 @@ package net.ess3.provider.providers;
 
 import net.ess3.provider.SchedulingProvider;
 import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.plugin.Plugin;
@@ -47,6 +48,11 @@ public class BukkitSchedulingProvider implements SchedulingProvider {
     @Override
     public EssentialsTask runEntityTaskRepeating(Entity entity, Runnable runnable, long delay, long period) {
         return scheduleSyncTaskRepeating(runnable, delay, period);
+    }
+
+    @Override
+    public void runLocationalTask(Chunk chunk, Runnable runnable) {
+        runGlobalLocationalTask(runnable, 1);
     }
 
     @Override
