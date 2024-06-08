@@ -50,7 +50,7 @@ public class Commandgc extends EssentialsCommand {
                         break;
                 }
 
-                AtomicInteger tileEntities = new AtomicInteger();
+                final AtomicInteger tileEntities = new AtomicInteger();
                 tileEntities.set(0);
 
                 try {
@@ -61,7 +61,7 @@ public class Commandgc extends EssentialsCommand {
                 } catch (final ClassCastException ex) {
                     ess.getLogger().log(Level.SEVERE, "Corrupted chunk data on world " + w, ex);
                 }
-                sender.sendTl("gcWorld", worldType, w.getName(), w.getLoadedChunks().length, tileEntities);
+                sender.sendTl("gcWorld", worldType, w.getName(), w.getLoadedChunks().length, w.getEntities().size(), tileEntities);
 
             }
         });
