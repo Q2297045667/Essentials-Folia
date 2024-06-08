@@ -2,11 +2,15 @@ package com.earth2me.essentials.commands;
 
 import com.earth2me.essentials.CommandSource;
 import com.earth2me.essentials.utils.DateUtil;
+import org.bukkit.Chunk;
+import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.World;
 
 import java.lang.management.ManagementFactory;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
 
 public class Commandgc extends EssentialsCommand {
     public Commandgc() {
@@ -46,16 +50,20 @@ public class Commandgc extends EssentialsCommand {
                         worldType = "The End";
                         break;
                 }
-                /*int tileEntities = 0;
+
+                AtomicInteger tileEntities = new AtomicInteger();
+                tileEntities.set(0);
 
                 try {
                     for (final Chunk chunk : w.getLoadedChunks()) {
-                        tileEntities += chunk.getTileEntities().length;
+                        Location location = (Location) chunk.getWorld().getChunkAt(chunk.getX(), chunk.getZ());
+                        ess.scheduleLocationDelayedTask(location, () ->
+                                tileEntities.getAndAdd(chunk.getTileEntities().length));
                     }
-                } catch (final java.lang.ClassCastException ex) {
+                } catch (final ClassCastException ex) {
                     ess.getLogger().log(Level.SEVERE, "Corrupted chunk data on world " + w, ex);
-                }*/
-                sender.sendTl("gcWorld", worldType, w.getName(), w.getLoadedChunks().length);
+                }
+                sender.sendTl("gcWorld", worldType, w.getName(), w.getLoadedChunks().length, tileEntities);
 
             }
         });
