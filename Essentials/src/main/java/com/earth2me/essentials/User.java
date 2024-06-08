@@ -62,8 +62,11 @@ public class User extends UserData implements Comparable<User>, IMessageRecipien
     // User modules
     private final IMessageRecipient messageRecipient;
     private transient final AsyncTeleport teleport;
+<<<<<<< HEAD
+=======
     @SuppressWarnings("deprecation")
     private transient final Teleport legacyTeleport;
+>>>>>>> 2.x
 
     // User command confirmation strings
     private final Map<User, BigDecimal> confirmingPayments = new WeakHashMap<>();
@@ -107,8 +110,11 @@ public class User extends UserData implements Comparable<User>, IMessageRecipien
     public User(final Player base, final IEssentials ess) {
         super(base, ess);
         teleport = new AsyncTeleport(this, ess);
+<<<<<<< HEAD
+=======
         //noinspection deprecation
         legacyTeleport = new Teleport(this, ess);
+>>>>>>> 2.x
         if (isAfk()) {
             afkPosition = this.getLocation();
         }
@@ -565,6 +571,8 @@ public class User extends UserData implements Comparable<User>, IMessageRecipien
         return teleport;
     }
 
+<<<<<<< HEAD
+=======
     /**
      * @deprecated This API is not asynchronous. Use {@link User#getAsyncTeleport()}
      */
@@ -575,6 +583,7 @@ public class User extends UserData implements Comparable<User>, IMessageRecipien
         return legacyTeleport;
     }
 
+>>>>>>> 2.x
     public long getLastOnlineActivity() {
         return lastOnlineActivity;
     }
@@ -828,7 +837,11 @@ public class User extends UserData implements Comparable<User>, IMessageRecipien
     public void updateActivityOnChat(final boolean broadcast) {
         if (ess.getSettings().cancelAfkOnChat()) {
             //Chat happens async, make sure we have a sync context
+<<<<<<< HEAD
+            ess.scheduleEntityDelayedTask(base, () -> updateActivity(broadcast, AfkStatusChangeEvent.Cause.CHAT));
+=======
             ess.scheduleSyncDelayedTask(() -> updateActivity(broadcast, AfkStatusChangeEvent.Cause.CHAT));
+>>>>>>> 2.x
         }
     }
 

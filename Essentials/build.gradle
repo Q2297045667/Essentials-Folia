@@ -20,7 +20,12 @@ dependencies {
 
     // Providers
     api project(':providers:BaseProviders')
+<<<<<<< HEAD
+    api project(':providers:PaperProvider')
+    api project(':providers:FoliaProvider')
+=======
     api project(path: ':providers:PaperProvider', configuration: 'shadow')
+>>>>>>> 2.x
     api(project(':providers:NMSReflectionProvider')) {
         exclude group: "org.bukkit", module: "bukkit"
     }
@@ -64,7 +69,12 @@ shadowJar {
         include (dependency('net.kyori:adventure-text-serializer-legacy'))
         include (dependency('net.kyori:adventure-text-minimessage'))
         include (project(':providers:BaseProviders'))
+<<<<<<< HEAD
+        include (project(':providers:PaperProvider'))
+        include (project(':providers:FoliaProvider'))
+=======
         include (project(path: ':providers:PaperProvider', configuration: 'shadow'))
+>>>>>>> 2.x
         include (project(':providers:NMSReflectionProvider'))
         include (project(':providers:1_8Provider'))
         include (project(':providers:1_12Provider'))

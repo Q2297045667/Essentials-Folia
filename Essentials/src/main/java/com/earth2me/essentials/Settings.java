@@ -722,7 +722,7 @@ public class Settings implements net.ess3.api.ISettings {
 
                     // This is 2 because Settings are reloaded twice in the startup lifecycle
                     if (reloadCount.get() < 2) {
-                        ess.scheduleSyncDelayedTask(() -> _addAlternativeCommand(effectiveAlias, toDisable));
+                        ess.scheduleGlobalDelayedTask(() -> _addAlternativeCommand(effectiveAlias, toDisable));
                     } else {
                         _addAlternativeCommand(effectiveAlias, toDisable);
                     }
@@ -735,7 +735,7 @@ public class Settings implements net.ess3.api.ISettings {
                     ess.getLogger().log(Level.INFO, "Syncing commands");
                 }
                 if (reloadCount.get() < 2) {
-                    ess.scheduleSyncDelayedTask(() -> ess.getSyncCommandsProvider().syncCommands());
+                    ess.scheduleGlobalDelayedTask(() -> ess.getSyncCommandsProvider().syncCommands());
                 } else {
                     ess.getSyncCommandsProvider().syncCommands();
                 }
