@@ -92,11 +92,8 @@ import net.ess3.provider.providers.FixedHeightWorldInfoProvider;
 import net.ess3.provider.providers.FlatSpawnEggProvider;
 import net.ess3.provider.providers.LegacyBannerDataProvider;
 import net.ess3.provider.providers.LegacyDamageEventProvider;
-<<<<<<< HEAD
 import net.ess3.provider.providers.FoliaSchedulingProvider;
-=======
 import net.ess3.provider.providers.LegacyInventoryViewProvider;
->>>>>>> 33e086ff05e02fd253b7c9b91a0304fc7877293d
 import net.ess3.provider.providers.LegacyItemUnbreakableProvider;
 import net.ess3.provider.providers.LegacyPlayerLocaleProvider;
 import net.ess3.provider.providers.LegacyPotionMetaProvider;
@@ -219,11 +216,8 @@ public class Essentials extends JavaPlugin implements net.ess3.api.IEssentials {
     private transient SignDataProvider signDataProvider;
     private transient DamageEventProvider damageEventProvider;
     private transient BiomeKeyProvider biomeKeyProvider;
-<<<<<<< HEAD
     private transient SchedulingProvider schedulingProvider;
-=======
     private transient InventoryViewProvider inventoryViewProvider;
->>>>>>> 33e086ff05e02fd253b7c9b91a0304fc7877293d
     private transient Kits kits;
     private transient RandomTeleport randomTeleport;
     private transient UpdateChecker updateChecker;
